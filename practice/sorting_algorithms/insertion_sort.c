@@ -19,17 +19,22 @@
     }                           \
 }
 
-#define ASSERT_ARRAY_EQ(A,B,length)                                                         \
-{                                                                                           \
-    for (int i = 0; i < length; i++)                                                        \
-    {                                                                                       \
-        if (A[i] != B[i])                                                                   \
-        {                                                                                   \
-            FAIL(#A "[%i] = %i, which is not equal to " #B "[%i] = %i", i, A[i], i, B[i]);  \
-            break;                                                                          \
-        }                                                                                   \
-    }                                                                                       \
-    PASS("A is equal to B");                                                                \
+#define ASSERT_ARRAY_EQ(A,B,length)                                       \
+{                                                                         \
+    int pass = 1;                                                         \
+    for (int i = 0; i < length; i++)                                      \
+    {                                                                     \
+        if (A[i] != B[i])                                                 \
+        {                                                                 \
+            pass = 0;                                                     \
+            FAIL(#A "[%i] = %i,!= " #B "[%i] = %i\n", i, A[i], i, B[i]);  \
+            break;                                                        \
+        }                                                                 \
+    }                                                                     \
+    if (pass)                                                             \
+    {                                                                     \
+        PASS(#A " == " #B "\n");                                          \
+    }                                                                     \
 }
 
 #define STR(x) #x
@@ -85,10 +90,11 @@ void test_suite_1()
     
     // Test
     printf("\nTest suite 1:\n");
+    int expected[] = {1,2,3,4,5,6};
     insertionSort(sorted, 6);
     PRINT_ARRAY(unsorted, 6, 10);
     PRINT_ARRAY(sorted, 6, 10);
-    ASSERT_ARRAY_EQ(unsorted,sorted,6)
+    ASSERT_ARRAY_EQ(sorted,expected,6)
     ASSERT(5 == 1 + 4);
     printf("\n");
     
