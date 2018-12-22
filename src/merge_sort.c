@@ -8,24 +8,72 @@
 #define false 0
 
 
-void insertionSort(int *A, int length)
+void merge(int *A, int p, int q, int r)
 {
-    for (int j = 1; j < length; j++)
+    int n1, n2;
+    n1 = q - p + 1;
+    n2 = r - q;
+    int L[n1 + 1]; // Leave room for sentinel
+    int R[n2 + 1]; // Leave room for sentinel
+    for (int i = 0; i < n1; i++)
     {
-        int key, i;
-        key = A[j];
-        i = j - 1;
-        while (i >= 0 && A[i] > key)
+        L[i] = A[p + i];
+    }
+    for (int j = 0; j < n2; j++)
+    {
+        R[j] = A[q + j + 1];
+    }
+    L[n1] = __INT_MAX__;
+    R[n2] = __INT_MAX__;
+    int i = 0, j = 0;
+    for (int k = p; k <= r; k++)
+    {
+        if (L[i] <= R[j])
         {
-            A[i+1] = A[i];
-            i = i - 1;
+            A[k] = L[i];
+            i++;
         }
-        A[i+1] = key;
+        else
+        {
+            A[k] = R[j];
+            j++;
+        }
     }
 }
 
+void mergeSort(int *A, int p, int r)
+{
+    if (p < r)
+    {
+        int q = (p + r) / 2;
+        mergeSort(A, p, q);
+        mergeSort(A, q + 1, r);
+        merge(A, p, q, r);
+    }
+}
+
+
+
 // Test cases
-void test_suite_1()
+void merge_test()
+{
+    // Setup
+    int unsorted[] = {1,3,5,2,4,6};
+    int *sorted;
+    cloneArray(unsorted, &sorted, 6);
+    
+    // Test
+    printf("merge_test:\n");
+    int expected[] = {1,2,3,4,5,6};
+    merge(sorted, 0, 2, 5);
+    PRINT_ARRAYS(unsorted, sorted, 6);
+    ASSERT_ARRAY_EQ(sorted,expected,6)
+    printf("\n");
+    
+    free(sorted);
+}
+
+void mergeSort_test()
 {
     // Setup
     int unsorted[] = {5,2,4,6,1,3};
@@ -33,13 +81,11 @@ void test_suite_1()
     cloneArray(unsorted, &sorted, 6);
     
     // Test
-    printf("\nTest suite 1:\n");
+    printf("mergeSort_test:\n");
     int expected[] = {1,2,3,4,5,6};
-    insertionSort(sorted, 6);
-    PRINT_ARRAY(unsorted, 6, 10);
-    PRINT_ARRAY(sorted, 6, 10);
+    mergeSort(sorted, 0, 5);
+    PRINT_ARRAYS(unsorted, sorted, 6);
     ASSERT_ARRAY_EQ(sorted,expected,6)
-    ASSERT(5 == 1 + 4);
     printf("\n");
     
     free(sorted);
@@ -48,6 +94,7 @@ void test_suite_1()
 // Run
 void main()
 {
-    printf("Running %s\n", __FILE__);
-    test_suite_1();
+    printf("Running %s\n\n", __FILE__);
+    merge_test();
+    mergeSort_test();
 }
