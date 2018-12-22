@@ -1,8 +1,8 @@
-#include <insertion_sort.h>
+#include <bubble_sort.h>
 #include <eval.h>
 
 // Test cases
-void insertionSort_test()
+void bubbleSort_test()
 {
     // Setup
     int unsorted[] = {5,2,4,6,1,3};
@@ -10,9 +10,9 @@ void insertionSort_test()
     cloneArray(unsorted, &sorted, 6);
     
     // Test
-    printf("\ninsertionSort_test:\n");
+    printf("\nbubbleSort_test:\n");
     int expected[] = {1,2,3,4,5,6};
-    insertionSort(sorted, 6);
+    bubbleSort(sorted, 6);
     PRINT_ARRAYS(unsorted, sorted, 6);
     ASSERT_ARRAY_EQ(sorted,expected,6)
     printf("\n");
@@ -24,5 +24,5 @@ void insertionSort_test()
 void main()
 {
     printf("\nRunning %s\n", __FILE__);
-    insertionSort_test();
+    bubbleSort_test();
 }

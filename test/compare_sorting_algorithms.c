@@ -1,5 +1,6 @@
-#include <merge_sort.h>
+#include <bubble_sort.h>
 #include <insertion_sort.h>
+#include <merge_sort.h>
 #include <eval.h>
 #include <time.h>
 
@@ -20,6 +21,14 @@ int main(int argc, char *argv[])
         unsorted[i] = rand();
     }
     
+    // Sort with bubble sort
+    int *bubble_sorted;
+    clock_t bubble_start, bubble_end;
+    cloneArray(unsorted, &bubble_sorted, size);
+    bubble_start = clock();
+    bubbleSort(bubble_sorted, size);
+    bubble_end = clock();
+    
     // Sort with insertion sort
     int *insertion_sorted;
     clock_t insertion_start, insertion_end;
@@ -38,10 +47,16 @@ int main(int argc, char *argv[])
     
     // Display results
     //PRINT_ARRAYS(insertion_sorted, merge_sorted, size);
+    ASSERT_ARRAY_EQ(bubble_sorted, insertion_sorted, size);
     ASSERT_ARRAY_EQ(insertion_sorted, merge_sorted, size);
+    double bubble_time = ((double)(bubble_end - bubble_start)) / CLOCKS_PER_SEC;
     double insertion_time = ((double)(insertion_end - insertion_start)) / CLOCKS_PER_SEC;
     double merge_time = ((double)(merge_end - merge_start)) / CLOCKS_PER_SEC;
-    printf("insertionSort time = %f, mergeSort time = %f\n", insertion_time, merge_time);
+    printf("bubbleSort = %f, insertionSort = %f, mergeSort = %f\n", bubble_time, insertion_time, merge_time);
+    
+    free(bubble_sorted);
+    free(insertion_sorted);
+    free(merge_sorted);
     
     return 0;
 }
