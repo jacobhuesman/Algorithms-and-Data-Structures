@@ -132,4 +132,37 @@ int max(int a, int b)
     putchar('\n');                                                       \
 }
 
+// PRINT_SQUARE_MATRIX
+// ----------------------------
+// | 1.23e3 | 1.23e3 | 1.23e3 |
+// ----------------------------
+// | 1.23e3 | 1.23e3 | 1.23e3 |
+// ----------------------------
+// | 1.23e3 | 1.23e3 | 1.23e3 |
+// ----------------------------
+#define PRINT_SQUARE_MATRIX(A,n,p)            \
+{                                             \
+    printf("%s:\n", #A);                      \
+    int length = (p+8)*n + 1;                 \
+    for (int i = 0; i < n; i++)               \
+    {                                         \
+        for (int j = 0; j < length; j++)      \
+        {                                     \
+            putchar('-');                     \
+        }                                     \
+        putchar('\n');                        \
+        putchar('|');                         \
+        for (int j = 0; j < n; j++)           \
+        {                                     \
+            printf(" %.*e |", p-1, A[i][j]);  \
+        }                                     \
+        putchar('\n');                        \
+    }                                         \
+    for (int k = 0; k < length; k++)          \
+    {                                         \
+        putchar('-');                         \
+    }                                         \
+    putchar('\n');                            \
+}
+
 #endif // EVAL_H
