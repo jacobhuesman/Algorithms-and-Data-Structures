@@ -1,14 +1,18 @@
 CC     = gcc
 CFLAGS = -I include
 
-PROGRAMS = merge_sort insertion_sort eval_test
-EXECUTABLES = $(foreach program, $(PROGRAMS), bin/$(program).exe)
+LIB_NAMES = merge_sort insertion_sort
+LIBS = $(foreach lib, $(LIB_NAMES), build/$(lib).o)
+TEST = $(foreach test, $(LIB_NAMES), bin/$(test)_test.exe) bin/eval_test.exe
 
-bin/%.exe : src/%.c include/eval.h
-	$(CC) $< $(CFLAGS) -g -o $@
+build/%.o : src/%.c
+	$(CC) $< $(CFLAGS) -g -c -o $@
+
+bin/%_test.exe : test/%_test.c build/%.o include/eval.h
+	$(CC) $< $(CFLAGS) -g -o $@ build/$*.o
 
 .PHONY: all
-all: $(EXECUTABLES)
+all: $(LIBS) $(TEST)
 
 .PHONY: clean
 clean:

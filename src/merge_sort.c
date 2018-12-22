@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <eval.h>
-
-// Definitions
-#define bool int
-#define true 1
-#define false 0
-
+#include <merge_sort.h>
 
 void merge(int *A, int p, int q, int r)
 {
@@ -50,51 +42,4 @@ void mergeSort(int *A, int p, int r)
         mergeSort(A, q + 1, r);
         merge(A, p, q, r);
     }
-}
-
-
-
-// Test cases
-void merge_test()
-{
-    // Setup
-    int unsorted[] = {1,3,5,2,4,6};
-    int *sorted;
-    cloneArray(unsorted, &sorted, 6);
-    
-    // Test
-    printf("merge_test:\n");
-    int expected[] = {1,2,3,4,5,6};
-    merge(sorted, 0, 2, 5);
-    PRINT_ARRAYS(unsorted, sorted, 6);
-    ASSERT_ARRAY_EQ(sorted,expected,6)
-    printf("\n");
-    
-    free(sorted);
-}
-
-void mergeSort_test()
-{
-    // Setup
-    int unsorted[] = {5,2,4,6,1,3};
-    int *sorted;
-    cloneArray(unsorted, &sorted, 6);
-    
-    // Test
-    printf("mergeSort_test:\n");
-    int expected[] = {1,2,3,4,5,6};
-    mergeSort(sorted, 0, 5);
-    PRINT_ARRAYS(unsorted, sorted, 6);
-    ASSERT_ARRAY_EQ(sorted,expected,6)
-    printf("\n");
-    
-    free(sorted);
-}
-
-// Run
-void main()
-{
-    printf("Running %s\n\n", __FILE__);
-    merge_test();
-    mergeSort_test();
 }

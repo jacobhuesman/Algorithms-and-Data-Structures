@@ -1,3 +1,6 @@
+#ifndef EVAL_H
+#define EVAL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -129,4 +132,4 @@ int max(int a, int b)
     putchar('\n');                                                       \
 }
 
-
+#endif // EVAL_H
