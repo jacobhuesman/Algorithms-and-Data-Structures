@@ -5,7 +5,7 @@ PROGRAMS = merge_sort insertion_sort eval_test
 EXECUTABLES = $(foreach program, $(PROGRAMS), bin/$(program).exe)
 
 bin/%.exe : src/%.c include/eval.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $< $(CFLAGS) -g -o $@
 
 .PHONY: all
 all: $(EXECUTABLES)

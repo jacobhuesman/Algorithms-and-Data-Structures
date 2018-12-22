@@ -36,8 +36,7 @@ void test_suite_1()
     printf("\nTest suite 1:\n");
     int expected[] = {1,2,3,4,5,6};
     insertionSort(sorted, 6);
-    PRINT_ARRAY(unsorted, 6, 10);
-    PRINT_ARRAY(sorted, 6, 10);
+    PRINT_ARRAYS(unsorted, sorted, 6);
     ASSERT_ARRAY_EQ(sorted,expected,6)
     ASSERT(5 == 1 + 4);
     printf("\n");
