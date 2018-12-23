@@ -1,7 +1,8 @@
 CC     = gcc
 CFLAGS = -I include -g
 
-LIB_NAMES = merge_sort insertion_sort bubble_sort square_matrix_multiply
+LIB_NAMES = merge_sort insertion_sort bubble_sort square_matrix_multiply_direct \
+			square_matrix_multiply_recursive square_matrix_multiply_strassen
 LIBS = $(foreach lib, $(LIB_NAMES), build/$(lib).o)
 TEST = $(foreach test, $(LIB_NAMES), bin/$(test)_test.exe) bin/eval_test.exe
 
