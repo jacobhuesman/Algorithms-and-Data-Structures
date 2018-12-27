@@ -106,6 +106,32 @@ int max(int a, int b)
     }                                                                                             \
 }
 
+#define ASSERT_SQUARE_MATRIX_DLEQ(n,A,B,D)                                                            \
+{                                                                                                 \
+    int pass = 1;                                                                                 \
+    for (int i = 0; i < n; i++)                                                                   \
+    {                                                                                             \
+        for (int j = 0; j < n; j++)                                                               \
+        {                                                                                         \
+            if ((A[i][j] - B[i][j]) > D)                                                             \
+            {                                                                                     \
+                pass = 0;                                                                         \
+                FAIL(#A "[%i][%i] = %f,!= " #B "[%i][%i] = %f\n", i, j, A[i][j], i, j, B[i][j]);  \
+                break;                                                                            \
+            }                                                                                     \
+        }                                                                                         \
+        if (!pass)                                                                                \
+        {                                                                                         \
+            break;                                                                                \
+        }                                                                                         \
+    }                                                                                             \
+    if (pass)                                                                                     \
+    {                                                                                             \
+        PASS(#A " == " #B "\n");                                                                  \
+    }                                                                                             \
+}
+
+
 #define STR(x) #x
 #define PRINT_ARRAY(A,length,padding)      \
 {                                          \
