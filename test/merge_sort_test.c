@@ -7,14 +7,14 @@ void merge_test()
     // Setup
     int unsorted[] = {1,3,5,2,4,6};
     int *sorted;
-    cloneArray(unsorted, &sorted, 6);
+    cloneArray(6, unsorted, &sorted);
     
     // Test
     printf("merge_test:\n");
     int expected[] = {1,2,3,4,5,6};
     merge(sorted, 0, 2, 5);
-    PRINT_ARRAYS(unsorted, sorted, 6);
-    ASSERT_ARRAY_EQ(sorted,expected,6)
+    PRINT_ARRAYS(6, unsorted, sorted);
+    ASSERT_ARRAY_EQ(6, sorted, expected)
     putchar('\n');
     
     // Free memory
@@ -26,14 +26,14 @@ void mergeSort_test()
     // Setup
     int unsorted[] = {5,2,4,6,1,3};
     int *sorted;
-    cloneArray(unsorted, &sorted, 6);
+    cloneArray(6, unsorted, &sorted);
     
     // Test
     printf("mergeSort_test:\n");
     int expected[] = {1,2,3,4,5,6};
     mergeSort(sorted, 0, 5);
-    PRINT_ARRAYS(unsorted, sorted, 6);
-    ASSERT_ARRAY_EQ(sorted,expected,6)
+    PRINT_ARRAYS(6, unsorted, sorted);
+    ASSERT_ARRAY_EQ(6, sorted, expected)
     putchar('\n');
     
     // Free memory

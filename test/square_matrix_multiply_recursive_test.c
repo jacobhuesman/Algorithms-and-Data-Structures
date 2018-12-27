@@ -13,12 +13,12 @@ void squareMatrixMultiplyRecursive_2x2_test()
     
     // Test
     printf("\nsquareMatrixMultiplyRecursive_2x2_test()\n");
-    squareMatrixMultiplyRecursive(2,2,A,B,C);
-    PRINT_SQUARE_MATRIX(A,2,2);
-    PRINT_SQUARE_MATRIX(B,2,2);
-    PRINT_SQUARE_MATRIX(C,2,2);
-    PRINT_SQUARE_MATRIX(E,2,2);
-    ASSERT_SQUARE_MATRIX_EQ(2,C,E); 
+    squareMatrixMultiplyRecursive(2, 2, A, B, C);
+    PRINT_SQUARE_MATRIX(2, A, 2);
+    PRINT_SQUARE_MATRIX(2, B, 2);
+    PRINT_SQUARE_MATRIX(2, C, 2);
+    PRINT_SQUARE_MATRIX(2, E, 2);
+    ASSERT_SQUARE_MATRIX_EQ(2, C, E); 
 }
 
 void squareMatrixMultiplyRecursive_4x4_test()
@@ -31,12 +31,12 @@ void squareMatrixMultiplyRecursive_4x4_test()
     
     // Test
     printf("\nsquareMatrixMultiplyRecursive_4x4_test()\n");
-    squareMatrixMultiplyRecursive(4,4,A,B,C);
-    PRINT_SQUARE_MATRIX(A,4,4);
-    PRINT_SQUARE_MATRIX(B,4,4);
-    PRINT_SQUARE_MATRIX(C,4,4);
-    PRINT_SQUARE_MATRIX(E,4,4);
-    ASSERT_SQUARE_MATRIX_EQ(4,C,E); 
+    squareMatrixMultiplyRecursive(4, 4, A, B, C);
+    PRINT_SQUARE_MATRIX(4, A, 4);
+    PRINT_SQUARE_MATRIX(4, B, 4);
+    PRINT_SQUARE_MATRIX(4, C, 4);
+    PRINT_SQUARE_MATRIX(4, E, 4);
+    ASSERT_SQUARE_MATRIX_EQ(4, C, E); 
 }
 
 // Run test cases

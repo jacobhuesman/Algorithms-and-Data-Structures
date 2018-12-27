@@ -12,12 +12,12 @@ void squareMatrixMultiplyDirect_test()
     double E[2][2] = {{19,22},{43,50}}; // expected
     
     // Test
-    squareMatrixMultiplyDirect(2,A,B,C);
-    PRINT_SQUARE_MATRIX(A,2,2);
-    PRINT_SQUARE_MATRIX(B,2,2);
-    PRINT_SQUARE_MATRIX(C,2,2);
-    PRINT_SQUARE_MATRIX(E,2,2);
-    ASSERT_SQUARE_MATRIX_EQ(2,C,E); 
+    squareMatrixMultiplyDirect(2, A, B, C);
+    PRINT_SQUARE_MATRIX(2, A, 2);
+    PRINT_SQUARE_MATRIX(2, B, 2);
+    PRINT_SQUARE_MATRIX(2, C, 2);
+    PRINT_SQUARE_MATRIX(2, E, 2);
+    ASSERT_SQUARE_MATRIX_EQ(2, C, E); 
 
 }
 

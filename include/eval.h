@@ -31,10 +31,10 @@ int intLength(int a)
     return length; 
 }
 
-void cloneArray(const int *original, int **copy, int length)
+void cloneArray(int n, const int *original, int **copy)
 {
-    *copy = (int*)malloc(length*4);
-    for (int i = 0; i < length; i++)
+    *copy = (int*)malloc(n*4);
+    for (int i = 0; i < n; i++)
     {
         (*copy)[i] = original[i];
     }
@@ -63,10 +63,10 @@ int max(int a, int b)
     }                           \
 }
 
-#define ASSERT_ARRAY_EQ(A,B,length)                                       \
+#define ASSERT_ARRAY_EQ(n,A,B)                                            \
 {                                                                         \
     int pass = 1;                                                         \
-    for (int i = 0; i < length; i++)                                      \
+    for (int i = 0; i < n; i++)                                           \
     {                                                                     \
         if (A[i] != B[i])                                                 \
         {                                                                 \
@@ -106,14 +106,14 @@ int max(int a, int b)
     }                                                                                             \
 }
 
-#define ASSERT_SQUARE_MATRIX_DLEQ(n,A,B,D)                                                            \
+#define ASSERT_SQUARE_MATRIX_DLEQ(n,A,B,D)                                                        \
 {                                                                                                 \
     int pass = 1;                                                                                 \
     for (int i = 0; i < n; i++)                                                                   \
     {                                                                                             \
         for (int j = 0; j < n; j++)                                                               \
         {                                                                                         \
-            if ((A[i][j] - B[i][j]) > D)                                                             \
+            if ((A[i][j] - B[i][j]) > D)                                                          \
             {                                                                                     \
                 pass = 0;                                                                         \
                 FAIL(#A "[%i][%i] = %f,!= " #B "[%i][%i] = %f\n", i, j, A[i][j], i, j, B[i][j]);  \
@@ -133,11 +133,11 @@ int max(int a, int b)
 
 
 #define STR(x) #x
-#define PRINT_ARRAY(A,length,padding)      \
+#define PRINT_ARRAY(n,A,padding)      \
 {                                          \
     printf("%" STR(padding) "s = {", #A);  \
     printf("%i", A[0]);                    \
-    for (int i = 1; i < length; i++)       \
+    for (int i = 1; i < n; i++)       \
     {                                      \
         printf(",%i", A[i]);               \
     }                                      \
@@ -150,13 +150,13 @@ int max(int a, int b)
 // ---------------------
 // |      12 |      12 |
 
-#define PRINT_ARRAYS(A,B,length)                                         \
+#define PRINT_ARRAYS(n,A,B)                                              \
 {                                                                        \
     /* find maximum character size   */                                  \
     char A_str[] = #A;                                                   \
     char B_str[] = #B;                                                   \
     int max_size = max(stringLength(A_str), stringLength(B_str));        \
-    for (int i = 0; i < length; i++)                                     \
+    for (int i = 0; i < n; i++)                                          \
     {                                                                    \
         max_size = max(max_size, intLength(A[i]));                       \
         max_size = max(max_size, intLength(B[i]));                       \
@@ -172,7 +172,7 @@ int max(int a, int b)
         putchar('-');                                                    \
     }                                                                    \
     putchar('\n');                                                       \
-    for (int i = 0; i < length; i++)                                     \
+    for (int i = 0; i < n; i++)                                          \
     {                                                                    \
         printf("| %*i | %*i |\n", max_size, A[i], max_size, B[i]);       \
     }                                                                    \
@@ -191,7 +191,7 @@ int max(int a, int b)
 // ----------------------------
 // | 1.23e3 | 1.23e3 | 1.23e3 |
 // ----------------------------
-#define PRINT_SQUARE_MATRIX(A,n,p)                \
+#define PRINT_SQUARE_MATRIX(n,A,p)                \
 {                                                 \
     printf("%s:\n", #A);                          \
     int length = (p+8)*n + 1;                     \

@@ -37,7 +37,7 @@ void print_arrays_tests()
     printf("print_arrays_tests:\n");
     int A[] = {1,2,3};
     int B[] = {4,5,6};
-    PRINT_ARRAYS(A,B,3);
+    PRINT_ARRAYS(3,A,B);
     putchar('\n');
 }
 
