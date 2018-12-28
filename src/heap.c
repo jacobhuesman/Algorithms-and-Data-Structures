@@ -41,7 +41,7 @@ void heapSort(int size, int *A)
     buildMaxHeap(size, A);
     for (int i = size - 1; i > 0; i--)
     {
-        int tmp = A[1];
+        int tmp = A[0];
         A[0] = A[i];
         A[i] = tmp;
         maxHeapify(--size, A, 0);
