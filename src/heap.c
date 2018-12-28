@@ -3,7 +3,7 @@
 
 void maxHeapify(int size, int *A, int i)
 {
-    PRINT_ARRAY(size, A, 3);
+    //PRINT_ARRAY(size, A, 3);
     int l, r, largest;
     l = LEFT(i);
     r = RIGHT(i); 

@@ -1,6 +1,7 @@
 #include <bubble_sort.h>
 #include <insertion_sort.h>
 #include <merge_sort.h>
+#include <heap.h>
 #include <eval.h>
 #include <time.h>
 
@@ -45,18 +46,33 @@ int main(int argc, char *argv[])
     mergeSort(merge_sorted, 0, size - 1);
     merge_end = clock();
     
+    // Sort with heap sort
+    int *heap_sorted;
+    clock_t heap_start, heap_end;
+    cloneArray(size, unsorted, &heap_sorted);
+    heap_start = clock();
+    heapSort(size, heap_sorted);
+    heap_end = clock();
+    
     // Display results
     //PRINT_ARRAYS(insertion_sorted, merge_sorted, size);
     ASSERT_ARRAY_EQ(size, bubble_sorted, insertion_sorted);
     ASSERT_ARRAY_EQ(size, insertion_sorted, merge_sorted);
+    ASSERT_ARRAY_EQ(size, merge_sorted, heap_sorted);
     double bubble_time = ((double)(bubble_end - bubble_start)) / CLOCKS_PER_SEC;
     double insertion_time = ((double)(insertion_end - insertion_start)) / CLOCKS_PER_SEC;
     double merge_time = ((double)(merge_end - merge_start)) / CLOCKS_PER_SEC;
-    printf("bubbleSort = %f, insertionSort = %f, mergeSort = %f\n", bubble_time, insertion_time, merge_time);
+    double heap_time = ((double)(heap_end - heap_start)) / CLOCKS_PER_SEC;
+    printf("n = %i, bubbleSort = %f, insertionSort = %f, mergeSort = %f, heapSort = %f\n", size, bubble_time, insertion_time, merge_time, heap_time);
+    
+    // Stats
+    // n = 100000, bubbleSort = 34.843, insertionSort = 8.078, mergeSort = 0.016, heapSort = 0.031
+
     
     free(bubble_sorted);
     free(insertion_sorted);
     free(merge_sorted);
+    free(heap_sorted);
     
     return 0;
 }
