@@ -62,6 +62,31 @@ int heapExtractMax(int *size, int *A)
     return max;
 }
 
+void heapIncreaseKey(int size, int *A, int i, int key)
+{
+    // TODO error if new key is smaller than current key
+    A[i] = key;
+    while (i > 0 && A[PARENT(i)] < A[i])
+    {
+        int tmp = A[i];
+        A[i] = A[PARENT(i)];
+        A[PARENT(i)] = tmp;
+        i = PARENT(i);
+    }
+}
+
+void maxHeapInsert(int *n, int **A, int key)
+{
+    int *copy = (int*)malloc(((*n)+1)*4);
+    for (int i = 0; i < (*n); i++)
+    {
+        copy[i] = (*A)[i];
+    }
+    (*A) = copy;
+    (*A)[(*n)++] = -1000; // TODO find actual integer minimum
+    heapIncreaseKey(*n, *A, (*n)-1, key);
+}
+
 
 
 

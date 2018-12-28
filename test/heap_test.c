@@ -83,6 +83,40 @@ void heapExtractMax_test()
     ASSERT_ARRAY_EQ(size, heap, expected);
 }
 
+void heapIncreaseKey_test()
+{
+    // Initialize
+    int heap[] = {16,4,10,14,7,9,3,2,8,1};
+    int expected[] = {16,15,10,8,14,9,3,2,4,1};
+    
+    // Test
+    printf("\n" "heapIncreaseKey_test:\n");
+    maxHeapify(10, heap, 1);
+    heapIncreaseKey(10, heap, 4, 15);
+    printf("\n");
+    PRINT_ARRAYS(10, heap, expected);
+    ASSERT_ARRAY_EQ(10, heap, expected);
+}
+
+void maxHeapInsert_test()
+{
+    // Initialize
+    int heap_values[] = {16,4,10,14,7,9,3,2,8,1};
+    int *heap;
+    cloneArray(10, heap_values, &heap);
+    int expected[] = {16,15,10,8,14,9,3,2,4,1,7};
+    
+    // Test
+    printf("\n" "heapIncreaseKey_test:\n");
+    int size = 10;
+    maxHeapify(size, heap, 1);
+    maxHeapInsert(&size, &heap, 15);
+    printf("\n");
+    PRINT_ARRAYS(size, heap, expected);
+    ASSERT(size == 11);
+    ASSERT_ARRAY_EQ(size, heap, expected)
+}
+
 // Run test cases
 void main()
 {
@@ -93,4 +127,6 @@ void main()
     heapSort_test();
     heapMaximum_test();
     heapExtractMax_test();
+    heapIncreaseKey_test();
+    maxHeapInsert_test();
 }

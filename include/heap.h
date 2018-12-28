@@ -10,5 +10,7 @@ void buildMaxHeap(int size, int *A);
 void heapSort(int size, int *A);
 int heapMaximum(int *A);
 int heapExtractMax(int *size, int *A);
+void heapIncreaseKey(int size, int *A, int i, int key);
+void maxHeapInsert(int *size, int **A, int key);
 
 #endif // HEAP_H
