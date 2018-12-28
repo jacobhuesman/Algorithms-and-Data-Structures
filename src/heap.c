@@ -1,11 +1,13 @@
 #include <heap.h>
+#include <eval.h>
 
 void maxHeapify(int size, int *A, int i)
 {
+    PRINT_ARRAY(size, A, 3);
     int l, r, largest;
     l = LEFT(i);
     r = RIGHT(i); 
-    if (l <= size && A[l] > A[i])
+    if (l < size && A[l] > A[i])
     {
         largest = l;
     }
@@ -13,7 +15,7 @@ void maxHeapify(int size, int *A, int i)
     {
         largest = i;
     }
-    if (r <= size && A[r] > A[largest])
+    if (r < size && A[r] > A[largest])
     {
         largest = r;
     }
@@ -22,6 +24,14 @@ void maxHeapify(int size, int *A, int i)
         int tmp = A[i];
         A[i] = A[largest];
         A[largest] = tmp;
+        maxHeapify(size, A, largest);
+    }
+}
+
+void buildMaxHeap(int size, int *A)
+{
+    for (int i = size/2 - 1; i >= 0; i--)
+    {
         maxHeapify(size, A, i);
     }
 }

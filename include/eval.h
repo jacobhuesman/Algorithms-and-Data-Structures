@@ -5,45 +5,10 @@
 #include <stdlib.h>
 
 // Helper functions
-int stringLength(const char *s)
-{
-    for (int i = 0; i < 1e9; i++)
-    {
-        if (s[i] == '\0')
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
-int intLength(int a)
-{
-    int test;
-    int length, divisor;
-    length = 0;
-    divisor = 1;
-    while ((a / divisor) > 0)
-    {
-        length++;
-        divisor = divisor * 10;
-    }
-    return length; 
-}
-
-void cloneArray(int n, const int *original, int **copy)
-{
-    *copy = (int*)malloc(n*4);
-    for (int i = 0; i < n; i++)
-    {
-        (*copy)[i] = original[i];
-    }
-}
-
-int max(int a, int b)
-{
-    return (a > b) ? a : b;
-}
+int stringLength(const char *s);
+int intLength(int a);
+void cloneArray(int n, const int *original, int **copy);
+int max(int a, int b);
 
 // Unit testing framework
 #define ANSI_RED     "\x1b[31m"
@@ -133,15 +98,15 @@ int max(int a, int b)
 
 
 #define STR(x) #x
-#define PRINT_ARRAY(n,A,padding)      \
-{                                          \
-    printf("%" STR(padding) "s = {", #A);  \
-    printf("%i", A[0]);                    \
-    for (int i = 1; i < n; i++)       \
-    {                                      \
-        printf(",%i", A[i]);               \
-    }                                      \
-    printf("}\n");                         \
+#define PRINT_ARRAY(n,A,padding)              \
+{                                             \
+    printf("%s = {", #A);                     \
+    printf("%" STR(padding) "i", A[0]);       \
+    for (int i = 1; i < n; i++)               \
+    {                                         \
+        printf(",%" STR(padding) "i", A[i]);  \
+    }                                         \
+    printf(" }\n");                           \
 }
 
 // PRINT_ARRAYS
