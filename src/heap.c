@@ -35,3 +35,15 @@ void buildMaxHeap(int size, int *A)
         maxHeapify(size, A, i);
     }
 }
+
+void heapSort(int size, int *A)
+{
+    buildMaxHeap(size, A);
+    for (int i = size - 1; i > 0; i--)
+    {
+        int tmp = A[1];
+        A[0] = A[i];
+        A[i] = tmp;
+        maxHeapify(--size, A, 0);
+    }
+}

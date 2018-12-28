@@ -42,6 +42,21 @@ void buildMaxHeap_test()
     ASSERT_ARRAY_EQ(10, heap, expected)
 }
 
+void heapSort_test()
+{
+    // Initialize
+    int heap[] = {4,1,3,2,16,9,10,14,8,7};
+    int expected[] = {1,2,3,4,7,8,9,10,14,16};
+    
+    // Test
+    printf("\nbuildMaxHeap_test:\n");
+    printf("\n");
+    heapSort(10, heap);
+    printf("\n");
+    PRINT_ARRAYS(10, heap, expected);
+    ASSERT_ARRAY_EQ(10, heap, expected)
+}
+
 // Run test cases
 void main()
 {
@@ -49,4 +64,5 @@ void main()
     macro_tests();
     maxHeapify_test();
     buildMaxHeap_test();
+    heapSort_test();
 }

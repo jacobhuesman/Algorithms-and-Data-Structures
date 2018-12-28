@@ -7,5 +7,6 @@
 
 void maxHeapify(int size, int *A, int i);
 void buildMaxHeap(int size, int *A);
+void heapSort(int size, int *A);
 
 #endif // HEAP_H
