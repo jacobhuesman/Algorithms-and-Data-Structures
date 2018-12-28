@@ -20,8 +20,7 @@ void maxHeapify_test()
     int expected[] = {16,14,10,8,7,9,3,2,4,1};
     
     // Test
-    printf("\nmaxHeapify_test:\n");
-    printf("\n");
+    printf("\n" "maxHeapify_test:\n");
     maxHeapify(10, heap, 1);
     printf("\n");
     //PRINT_ARRAYS(10, heap, expected);
@@ -35,8 +34,7 @@ void buildMaxHeap_test()
     int expected[] = {16,14,10,8,7,9,3,2,4,1};
     
     // Test
-    printf("\nbuildMaxHeap_test:\n");
-    printf("\n");
+    printf("\n" "buildMaxHeap_test:\n");
     buildMaxHeap(10, heap);
     printf("\n");
     ASSERT_ARRAY_EQ(10, heap, expected)
@@ -49,12 +47,40 @@ void heapSort_test()
     int expected[] = {1,2,3,4,7,8,9,10,14,16};
     
     // Test
-    printf("\nbuildMaxHeap_test:\n");
-    printf("\n");
+    printf("\n" "heapSort_test:\n");
     heapSort(10, heap);
     printf("\n");
     PRINT_ARRAYS(10, heap, expected);
     ASSERT_ARRAY_EQ(10, heap, expected)
+}
+
+void heapMaximum_test()
+{
+    // Initialize
+    int heap[] = {4,1,3,2,16,9,10,14,8,7};
+    
+    // Test
+    printf("\n" "heapMaximum_test:\n");
+    buildMaxHeap(10, heap);
+    printf("\n");
+    ASSERT(heapMaximum(heap) == 16);
+}
+
+void heapExtractMax_test()
+{
+    // Initialize
+    int heap[] = {4,1,3,2,16,9,10,14,8,7};
+    int expected[] = {14,8,10,4,7,9,3,2,1};
+    
+    // Test
+    printf("\nbuildMaxHeap_test:\n");
+    int size = 10, result = -1;
+    buildMaxHeap(size, heap);
+    result = heapExtractMax(&size, heap);
+    printf("\n");
+    ASSERT(result == 16);
+    ASSERT(size == 9);
+    ASSERT_ARRAY_EQ(size, heap, expected);
 }
 
 // Run test cases
@@ -65,4 +91,6 @@ void main()
     maxHeapify_test();
     buildMaxHeap_test();
     heapSort_test();
+    heapMaximum_test();
+    heapExtractMax_test();
 }

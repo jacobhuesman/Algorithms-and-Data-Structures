@@ -47,3 +47,31 @@ void heapSort(int size, int *A)
         maxHeapify(--size, A, 0);
     }
 }
+
+int heapMaximum(int *A)
+{
+    return A[0];
+}
+
+int heapExtractMax(int *size, int *A)
+{
+    // TODO should implement some form of error handling for underflow
+    int max = A[0];
+    A[0] = A[--(*size)];
+    maxHeapify(*size, A, 0);
+    return max;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
