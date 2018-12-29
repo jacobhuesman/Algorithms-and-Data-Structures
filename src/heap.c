@@ -82,7 +82,9 @@ void maxHeapInsert(int *n, int **A, int key)
     {
         copy[i] = (*A)[i];
     }
+    int *tmp = *A;
     (*A) = copy;
+    free(tmp);
     (*A)[(*n)++] = -1000; // TODO find actual integer minimum
     heapIncreaseKey(*n, *A, (*n)-1, key);
 }

@@ -5,7 +5,7 @@ CFLAGS = -I include -g
 
 LIB_NAMES = eval merge_sort insertion_sort bubble_sort square_matrix_multiply_direct \
 			square_matrix_multiply_recursive square_matrix_multiply_strassen \
-			heap
+			heap quick_sort
 LIBS = $(foreach lib, $(LIB_NAMES), build/$(lib).o)
 TEST = $(foreach test, $(LIB_NAMES), bin/$(test)_test.exe)
 
