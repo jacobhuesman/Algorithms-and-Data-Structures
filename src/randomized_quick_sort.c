@@ -6,7 +6,7 @@ int randomizedPartition(int *A, int p, int r)
 {
     // Randomize
     {
-        int i = (rand() % (r - p)) + p;
+        int i = (rand() % (r - p)) + p; // TODO double check this
         int tmp = A[r];
         A[r] = A[i];
         A[i] = tmp;
