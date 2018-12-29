@@ -19,13 +19,18 @@ int partition(int *A, int p, int r)
     return i + 1;
 }
 
-void quickSort(int *A, int p, int r)
+void quickSort(int n, int *A)
+{
+    _quickSort(A, 0, n - 1);
+}
+
+void _quickSort(int *A, int p, int r)
 {
     if (p < r)
     {
         int q = partition(A, p, r);
-        quickSort(A, p, q - 1);
-        quickSort(A, q + 1, r);
+        _quickSort(A, p, q - 1);
+        _quickSort(A, q + 1, r);
     }
     
 }
