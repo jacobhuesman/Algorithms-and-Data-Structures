@@ -28,8 +28,8 @@ bin/eval_test.exe : test/eval_test.c include/eval.h
 	
 #bin/compare_sorting_algorithms.exe : test/compare_sorting_algorithms.c build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o include/eval.h
 #	$(CC) $< -Wl,--stack,1000000000 $(CFLAGS) -o $@ build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o
-bin/compare_sorting_algorithms.exe : test/compare_sorting_algorithms.c build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o build/counting_sort.o include/eval.h
-	$(CC) $< $(CFLAGS) -o $@ build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o build/counting_sort.o
+bin/compare_sorting_algorithms.exe : test/compare_sorting_algorithms.c build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o build/counting_sort.o build/radix_sort.o include/eval.h
+	$(CC) $< $(CFLAGS) -o $@ build/bubble_sort.o build/insertion_sort.o build/merge_sort.o build/heap.o build/quick_sort.o build/randomized_quick_sort.o build/counting_sort.o build/radix_sort.o
 	
 #bin/compare_matrix_multiplication_algorithms.exe : test/compare_matrix_multiplication_algorithms.c build/square_matrix_multiply_direct.o build/square_matrix_multiply_recursive.o build/square_matrix_multiply_strassen.o include/eval.h
 #	$(CC) $< -Wl,--stack,1000000000 $(CFLAGS) -o $@ build/square_matrix_multiply_direct.o build/square_matrix_multiply_recursive.o build/square_matrix_multiply_strassen.o

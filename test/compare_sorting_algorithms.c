@@ -4,6 +4,7 @@
 #include <quick_sort.h>
 #include <randomized_quick_sort.h>
 #include <counting_sort.h>
+#include <radix_sort.h>
 #include <heap.h>
 #include <eval.h>
 #include <time.h>
@@ -81,6 +82,14 @@ int main(int argc, char *argv[])
     counting_start = clock();
     countingSort(size, counting_sorted, k);
     counting_end = clock();
+	
+    // Sort with radix sort
+    int *radix_sorted;
+    clock_t radix_start, radix_end;
+    CLONE_ARRAY(size, unsorted, radix_sorted);
+    radix_start = clock();
+    radixSort(size, radix_sorted, k);
+    radix_end = clock();
     
     // Display results
     //PRINT_ARRAYS(insertion_sorted, merge_sorted, size);
@@ -90,6 +99,7 @@ int main(int argc, char *argv[])
     ASSERT_ARRAY_EQ(size, heap_sorted, quick_sorted);
     ASSERT_ARRAY_EQ(size, quick_sorted, randomized_quick_sorted);
 	ASSERT_ARRAY_EQ(size, randomized_quick_sorted, counting_sorted);
+	ASSERT_ARRAY_EQ(size, counting_sorted, radix_sorted);
     double bubble_time = ((double)(bubble_end - bubble_start)) / CLOCKS_PER_SEC;
     double insertion_time = ((double)(insertion_end - insertion_start)) / CLOCKS_PER_SEC;
     double merge_time = ((double)(merge_end - merge_start)) / CLOCKS_PER_SEC;
@@ -97,8 +107,19 @@ int main(int argc, char *argv[])
     double quick_time = ((double)(quick_end - quick_start)) / CLOCKS_PER_SEC;
     double randomized_quick_time = ((double)(randomized_quick_end - randomized_quick_start)) / CLOCKS_PER_SEC;
 	double counting_time = ((double)(counting_end - counting_start)) / CLOCKS_PER_SEC;
+	double radix_time = ((double)(radix_end - radix_start)) / CLOCKS_PER_SEC;
 
-    printf("n = %i, bubbleSort = %f, insertionSort = %f, mergeSort = %f, heapSort = %f, quickSort = %f, randomizedQuickSort = %f, countingSort = %f\n", size, bubble_time, insertion_time, merge_time, heap_time, quick_time, randomized_quick_time, counting_time);
+    printf("n = %i\n"
+	       "bubbleSort          = %.3f\n"
+		   "insertionSort       = %.3f\n"
+		   "mergeSort           = %.3f\n"
+		   "heapSort            = %.3f\n"
+		   "quickSort           = %.3f\n"
+		   "randomizedQuickSort = %.3f\n"
+		   "countingSort        = %.3f\n"
+		   "radixSort           = %.3f\n", 
+		   size, bubble_time, insertion_time, merge_time, heap_time, 
+		   quick_time, randomized_quick_time, counting_time, radix_time);
     
     // Stats
     // n = 1000000, bubbleSort = 2578.859375, 
@@ -113,6 +134,8 @@ int main(int argc, char *argv[])
     free(heap_sorted);
     free(quick_sorted);
     free(randomized_quick_sorted);
+	free(counting_sorted);
+	free(radix_sorted);
     
     return 0;
 }

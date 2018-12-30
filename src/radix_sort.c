@@ -11,7 +11,8 @@ void radixSort(int n, uint32_t *A, int k)
 {
 	uint32_t B[n];
 	uint32_t C[16];
-	for (int i = 0; i < k; i++)
+	int i = 0;
+	for (int i = 0; (k >> (4*i)) > 0; i++)
 	{
 		for (int j = 0; j < 16; j++)
 		{
@@ -19,8 +20,7 @@ void radixSort(int n, uint32_t *A, int k)
 		}
 		for (int j = 0; j < n; j++)
 		{
-			C[(A[j] >> (4 * i)) % 16]++;
-			//C[(A[j] << ) >> (4 * i)]++;
+			C[(A[j] >> (4 * i)) % 16]++; // TODO potentially avoid modulo operator with bit shifts
 		}
 		for (int j = 1; j < 16; j++)
 		{

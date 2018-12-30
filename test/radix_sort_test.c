@@ -11,7 +11,7 @@ void radixSort_test()
 	
 	// Test
 	printf("\n" "radixSort_test:\n");
-	radixSort(6, sorted, 2);
+	radixSort(6, sorted, 50);
 	PRINT_ARRAYS(6, sorted, expected);
 	ASSERT_ARRAY_EQ(6, sorted, expected);
 	
