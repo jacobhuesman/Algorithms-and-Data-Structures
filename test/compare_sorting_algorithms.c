@@ -65,12 +65,12 @@ int main(int argc, char *argv[])
     quick_end = clock();
     
     // Sort with randomized quick sort
-    int *randomizedQuick_sorted;
-    clock_t randomizedQuick_start, randomizedQuick_end;
-    cloneArray(size, unsorted, &randomizedQuick_sorted);
-    randomizedQuick_start = clock();
-    randomizedQuickSort(size, randomizedQuick_sorted);
-    randomizedQuick_end = clock();
+    int *randomized_quick_sorted;
+    clock_t randomized_quick_start, randomized_quick_end;
+    cloneArray(size, unsorted, &randomized_quick_sorted);
+    randomized_quick_start = clock();
+    randomizedQuickSort(size, randomized_quick_sorted);
+    randomized_quick_end = clock();
     
     // Display results
     //PRINT_ARRAYS(insertion_sorted, merge_sorted, size);
@@ -78,15 +78,15 @@ int main(int argc, char *argv[])
     ASSERT_ARRAY_EQ(size, insertion_sorted, merge_sorted);
     ASSERT_ARRAY_EQ(size, merge_sorted, heap_sorted);
     ASSERT_ARRAY_EQ(size, heap_sorted, quick_sorted);
-    ASSERT_ARRAY_EQ(size, quick_sorted, randomizedQuick_sorted);
+    ASSERT_ARRAY_EQ(size, quick_sorted, randomized_quick_sorted);
     double bubble_time = ((double)(bubble_end - bubble_start)) / CLOCKS_PER_SEC;
     double insertion_time = ((double)(insertion_end - insertion_start)) / CLOCKS_PER_SEC;
     double merge_time = ((double)(merge_end - merge_start)) / CLOCKS_PER_SEC;
     double heap_time = ((double)(heap_end - heap_start)) / CLOCKS_PER_SEC;
     double quick_time = ((double)(quick_end - quick_start)) / CLOCKS_PER_SEC;
-    double randomizedQuick_time = ((double)(randomizedQuick_end - randomizedQuick_start)) / CLOCKS_PER_SEC;
+    double randomized_quick_time = ((double)(randomized_quick_end - randomized_quick_start)) / CLOCKS_PER_SEC;
 
-    printf("n = %i, bubbleSort = %f, insertionSort = %f, mergeSort = %f, heapSort = %f, quickSort = %f, randomizedQuickSort = %f\n", size, bubble_time, insertion_time, merge_time, heap_time, quick_time, randomizedQuick_time);
+    printf("n = %i, bubbleSort = %f, insertionSort = %f, mergeSort = %f, heapSort = %f, quickSort = %f, randomizedQuickSort = %f\n", size, bubble_time, insertion_time, merge_time, heap_time, quick_time, randomized_quick_time);
     
     // Stats
     // n = 100000, bubbleSort = 34.312000, insertionSort = 8.109000, 
