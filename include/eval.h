@@ -36,7 +36,7 @@ int max(int a, int b);
         if (A[i] != B[i])                                                 \
         {                                                                 \
             pass = 0;                                                     \
-            FAIL(#A "[%i] = %i,!= " #B "[%i] = %i\n", i, A[i], i, B[i]);  \
+            FAIL(#A "[%i] = %i != " #B "[%i] = %i\n", i, A[i], i, B[i]);  \
             break;                                                        \
         }                                                                 \
     }                                                                     \
