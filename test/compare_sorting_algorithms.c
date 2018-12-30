@@ -29,23 +29,23 @@ int main(int argc, char *argv[])
     // Sort with bubble sort
     int *bubble_sorted;
     clock_t bubble_start, bubble_end;
-    cloneArray(size, unsorted, &bubble_sorted);
+    CLONE_ARRAY(size, unsorted, bubble_sorted);
     bubble_start = clock();
-    bubbleSort(bubble_sorted, size);
+    //bubbleSort(bubble_sorted, size);
     bubble_end = clock();
     
     // Sort with insertion sort
     int *insertion_sorted;
     clock_t insertion_start, insertion_end;
-    cloneArray(size, unsorted, &insertion_sorted);
+    CLONE_ARRAY(size, unsorted, insertion_sorted);
     insertion_start = clock();
-    insertionSort(insertion_sorted, size);
+    //insertionSort(insertion_sorted, size);
     insertion_end = clock();
     
     // Sort with merge sort
     int *merge_sorted;
     clock_t merge_start, merge_end;
-    cloneArray(size, unsorted, &merge_sorted);
+    CLONE_ARRAY(size, unsorted, merge_sorted);
     merge_start = clock();
     mergeSort(merge_sorted, 0, size - 1);
     merge_end = clock();
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     // Sort with heap sort
     int *heap_sorted;
     clock_t heap_start, heap_end;
-    cloneArray(size, unsorted, &heap_sorted);
+    CLONE_ARRAY(size, unsorted, heap_sorted);
     heap_start = clock();
     heapSort(size, heap_sorted);
     heap_end = clock();
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     // Sort with quick sort
     int *quick_sorted;
     clock_t quick_start, quick_end;
-    cloneArray(size, unsorted, &quick_sorted);
+    CLONE_ARRAY(size, unsorted, quick_sorted);
     quick_start = clock();
     quickSort(size, quick_sorted);
     quick_end = clock();
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     // Sort with randomized quick sort
     int *randomized_quick_sorted;
     clock_t randomized_quick_start, randomized_quick_end;
-    cloneArray(size, unsorted, &randomized_quick_sorted);
+    CLONE_ARRAY(size, unsorted, randomized_quick_sorted);
     randomized_quick_start = clock();
     randomizedQuickSort(size, randomized_quick_sorted);
     randomized_quick_end = clock();
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 	// Sort with counting sort
     int *counting_sorted;
     clock_t counting_start, counting_end;
-    cloneArray(size, unsorted, &counting_sorted);
+    CLONE_ARRAY(size, unsorted, counting_sorted);
     counting_start = clock();
     countingSort(size, counting_sorted, k);
     counting_end = clock();
@@ -101,8 +101,10 @@ int main(int argc, char *argv[])
     printf("n = %i, bubbleSort = %f, insertionSort = %f, mergeSort = %f, heapSort = %f, quickSort = %f, randomizedQuickSort = %f, countingSort = %f\n", size, bubble_time, insertion_time, merge_time, heap_time, quick_time, randomized_quick_time, counting_time);
     
     // Stats
-    // n = 100000, bubbleSort = 34.312000, insertionSort = 8.109000, 
-    // mergeSort = 0.016000, heapSort = 0.031000, quickSort = 0.016000
+    // n = 1000000, bubbleSort = 2578.859375, 
+	// insertionSort = 619.812500, mergeSort = 0.171875, 
+	// heapSort = 0.250000, quickSort = 1.750000, 
+	// randomizedQuickSort = 1.781250, countingSort = 0.015625
 
     
     free(bubble_sorted);

@@ -7,7 +7,7 @@ void merge_test()
     // Setup
     int unsorted[] = {1,3,5,2,4,6};
     int *sorted;
-    cloneArray(6, unsorted, &sorted);
+    CLONE_ARRAY(6, unsorted, sorted);
     
     // Test
     printf("merge_test:\n");
@@ -26,7 +26,7 @@ void mergeSort_test()
     // Setup
     int unsorted[] = {5,2,4,6,1,3};
     int *sorted;
-    cloneArray(6, unsorted, &sorted);
+    CLONE_ARRAY(6, unsorted, sorted);
     
     // Test
     printf("mergeSort_test:\n");

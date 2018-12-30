@@ -7,28 +7,28 @@ void stringLength_tests()
     char test[] = "test";
     char numbers_string[] = "1234567890";
     char empty_string[] = "";
-    ASSERT(stringLength(test) == 4);
-    ASSERT(stringLength(numbers_string) == 10);
-    ASSERT(stringLength(empty_string) == 0);
+    ASSERT(STRING_LENGTH(test) == 4);
+    ASSERT(STRING_LENGTH(numbers_string) == 10);
+    ASSERT(STRING_LENGTH(empty_string) == 0);
     putchar('\n');
 }
 
 void intLength_tests()
 {
     printf("intLength_tests:\n");
-    ASSERT(intLength(123456) == 6);
-    ASSERT(intLength(9) == 1);
-    ASSERT(intLength(1234567890) == 10);
+    ASSERT(INT_LENGTH(123456) == 6);
+    ASSERT(INT_LENGTH(9) == 1);
+    ASSERT(INT_LENGTH(1234567890) == 10);
     putchar('\n');
 }
 
 void max_tests()
 {
     printf("max_tests:\n");
-    ASSERT(max(2,3) == 3);
-    ASSERT(max(6,4) == 6);
-    ASSERT(max(0,1) == 1);
-    ASSERT(max(-2,4) == 4);
+    ASSERT(MAX(2,3) == 3);
+    ASSERT(MAX(6,4) == 6);
+    ASSERT(MAX(0,1) == 1);
+    ASSERT(MAX(-2,4) == 4);
     putchar('\n');
 }
 

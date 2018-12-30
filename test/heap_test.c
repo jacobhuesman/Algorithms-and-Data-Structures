@@ -103,7 +103,7 @@ void maxHeapInsert_test()
     // Initialize
     int heap_values[] = {16,4,10,14,7,9,3,2,8,1};
     int *heap;
-    cloneArray(10, heap_values, &heap);
+    CLONE_ARRAY(10, heap_values, heap);
     int expected[] = {16,15,10,8,14,9,3,2,4,1,7};
     
     // Test
