@@ -2,12 +2,11 @@ CC     = gcc
 #CFLAGS = -Wl,--stack,16777216 -I include -g
 CFLAGS = -I include -g
 
-
 LIB_NAMES = merge_sort insertion_sort bubble_sort \
 			square_matrix_multiply_direct square_matrix_multiply_recursive \
 			square_matrix_multiply_strassen heap quick_sort \
 			randomized_quick_sort counting_sort radix_sort \
-            stack
+            stack queue
 LIBS = $(foreach lib, $(LIB_NAMES), build/$(lib).o)
 TEST = $(foreach test, $(LIB_NAMES), bin/$(test)_test.exe)
 

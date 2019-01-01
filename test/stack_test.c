@@ -7,6 +7,7 @@ void createStack_test()
     Stack *S = createStack(10);
     ASSERT(S->size == 10);
     ASSERT(S->top == -1);
+    deleteStack(S);
 }
 
 void stackEmpty_test()
@@ -18,6 +19,7 @@ void stackEmpty_test()
     ASSERT(stackEmpty(S) == false);
     pop(S);
     ASSERT(stackEmpty(S) == true);
+    deleteStack(S);
 }
 
 void push_test()
@@ -31,6 +33,7 @@ void push_test()
     ASSERT(S->top == 1);
     ASSERT(push(S, 300) == STACK_ERROR);
     ASSERT(S->top == 1);    
+    deleteStack(S);
 }
 
 void pop_test()
@@ -52,6 +55,7 @@ void pop_test()
     ASSERT(S->top == -1);
     ASSERT(pop(S) == STACK_ERROR);
     ASSERT(S->top == -1); 
+    deleteStack(S);
 }
 
 void main()

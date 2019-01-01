@@ -1,22 +1,23 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <stdint.h>
+#include <limits.h>
 #include <stdbool.h>
 
-#define STACK_ERROR INT32_MIN
+#define STACK_ERROR INT_MIN
 
 typedef struct
 {
-    int32_t size;
-    int32_t *data;
-    int32_t top;
+    int size;
+    int top;
+    int *data;
 } Stack;
 
 Stack* createStack(int size);
-bool stackEmpty(Stack *stack);
-int push(Stack *stack, int x);
-int pop(Stack *stack);
+void deleteStack(Stack *S);
+bool stackEmpty(Stack *S);
+int push(Stack *S, int x);
+int pop(Stack *S);
 
 
 #endif // STACK_H

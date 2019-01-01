@@ -5,9 +5,15 @@ Stack* createStack(int size)
 {
     Stack *S = (Stack*)malloc(sizeof(Stack));
     S->size = size;
-    S->data = (int32_t*)malloc(sizeof(int32_t)*size);
     S->top = -1;
+    S->data = (int*)malloc(sizeof(int)*size);
     return S;
+}
+
+void deleteStack(Stack *S)
+{
+    free(S->data);
+    free(S);
 }
 
 bool stackEmpty(Stack *S)
