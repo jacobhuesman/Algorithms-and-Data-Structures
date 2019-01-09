@@ -121,6 +121,10 @@
     }                                                \
 }
 
+#define TEST(x)                    \
+{                                  \
+    printf("\nTesting %s\n", #x);  \
+}
 
 #define STR(x) #x
 #define PRINT_ARRAY(n,A,padding)              \

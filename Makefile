@@ -6,7 +6,7 @@ LIB_NAMES = merge_sort insertion_sort bubble_sort \
 			square_matrix_multiply_direct square_matrix_multiply_recursive \
 			square_matrix_multiply_strassen heap quick_sort \
 			randomized_quick_sort counting_sort radix_sort \
-            stack queue
+            stack queue doubly_linked_list binary_search_tree
 LIBS = $(foreach lib, $(LIB_NAMES), build/$(lib).o)
 TEST = $(foreach test, $(LIB_NAMES), bin/$(test)_test.exe)
 
@@ -17,7 +17,7 @@ all: $(LIBS) $(TEST) bin/compare_sorting_algorithms.exe bin/compare_matrix_multi
 clean:
 	rm $(wildcard bin/*.exe) $(wildcard build/*.o)
 
-build/%.o : src/%.c
+build/%.o : src/%.c include/%.h
 	$(CC) $< $(CFLAGS) -c -o $@
 
 bin/%_test.exe : test/%_test.c build/%.o include/eval.h
